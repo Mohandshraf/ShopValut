@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "582728644523",
+    "project_id": "shopvault-69e12",
+    "storage_bucket": "shopvault-69e12.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582728644523:android:1465b6fb04c855a32b84ee",
+        "android_client_info": {
+          "package_name": "com.example.shopvalut"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "582728644523-ohbl8p09p372sppc0i08pfq7qlhfr421.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_Iio6z-RgnjmiLu4CB-qJ1ltzclW_V2E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "582728644523-ohbl8p09p372sppc0i08pfq7qlhfr421.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
