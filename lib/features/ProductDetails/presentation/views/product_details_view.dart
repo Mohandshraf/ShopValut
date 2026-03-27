@@ -235,7 +235,9 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                                   ),
                                   const Gap(8),
                                   Text(
-                                    'Premium quality product with exceptional design and durability. Made with carefully selected materials to ensure the best experience. Perfect for everyday use with modern aesthetics.',
+                                    p.description.isNotEmpty
+                                        ? p.description
+                                        : 'Premium quality product with exceptional design and durability.',
                                     style: GoogleFonts.outfit(
                                       fontSize: 14,
                                       color: context.textSecondary,

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -25,8 +26,44 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   final user = FirebaseAuth.instance.currentUser;
   int _currentBanner = 0, _selectedCategory = 0;
   final PageController _bannerController = PageController();
+
+  late Duration _remaining;
+  Timer? _countdownTimer;
+
+  void _startCountdown() {
+    final now = DateTime.now();
+    final nextReset = DateTime(
+      now.year,
+      now.month,
+      now.day,
+      ((now.hour ~/ 3) + 1) * 3,
+    );
+    _remaining = nextReset.difference(now);
+    _countdownTimer = Timer.periodic(const Duration(seconds: 1), (_) {
+      if (!mounted) return;
+      setState(() {
+        _remaining -= const Duration(seconds: 1);
+        if (_remaining.isNegative) _remaining = const Duration(hours: 3);
+      });
+    });
+  }
+
+  String get _countdownText {
+    final h = _remaining.inHours.toString().padLeft(2, '0');
+    final m = (_remaining.inMinutes % 60).toString().padLeft(2, '0');
+    final s = (_remaining.inSeconds % 60).toString().padLeft(2, '0');
+    return '\$h:\$m:\$s';
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _startCountdown();
+  }
+
   @override
   void dispose() {
+    _countdownTimer?.cancel();
     _bannerController.dispose();
     super.dispose();
   }
@@ -339,7 +376,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  '02:34:13',
+                  _countdownText,
                   style: GoogleFonts.outfit(
                     fontSize: 11,
                     fontWeight: FontWeight.w600,

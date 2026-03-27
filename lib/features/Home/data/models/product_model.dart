@@ -8,6 +8,8 @@ class ProductModel {
   final int reviews;
   final int discount;
   final String category;
+  final String description;
+  final List<String> tags;
 
   ProductModel({
     required this.id,
@@ -19,5 +21,7 @@ class ProductModel {
     required this.reviews,
     required this.discount,
     required this.category,
+    this.description = '',
+    this.tags = const [],
   });
 }
